@@ -18,3 +18,9 @@ echo "2. CHECK OK - Enviando OK_HEADER"
 echo "OK_HEADER" | nc localhost 2022
 
 DATA=`nc -l $PORT`
+
+if [ "$(echo "$DATA" | cut -d " " -f 1)" != "FILE_NAME" ]
+then
+	echo "ERROR 2: Prefijo incorrecto"
+	exit 1
+fi

@@ -15,3 +15,7 @@ then
 	exit 1
 fi
 
+echo "3. ENVIAR NOMBRE DE ARCHIVO"
+echo "FILE_NAME dragon.txt" | nc localhost 2022
+
+DATA=`nc -l $PORT`
