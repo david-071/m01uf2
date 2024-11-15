@@ -27,6 +27,11 @@ DATA=`nc -l $PORT`
 echo "7. COMPROVANDO OK_FILE_NAME"
 if [ "$DATA" != "OK_FILE_NAME" ]
 then
-	echo "ERROR 2: El prefijo se envió incorrectamente"
+	echo "ERROR 2: El nombre se envió incorrectamente"
 	exit 2
 fi
+
+echo "8. ENVIAR ARCHIVO"
+cat ./Client/dragon.txt | nc localhost $PORT
+
+DATA=`nc -l $PORT`
