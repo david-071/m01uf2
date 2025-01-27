@@ -1,4 +1,4 @@
-"FILE_NAMEi/bin/bash
+#0 "FILE_NAMEi/bin/bash
 
 
 PORT="2022"
