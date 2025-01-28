@@ -18,7 +18,8 @@ fi
 echo "4. CHECK OK - Enviando FILE_NAME"
 
 FILE_NAME="dragon.txt"
-echo "FILE_NAME $FILE_NAME" | nc localhost $PORT
+MD5SUM=`echo -n dragon.txt | md5sum`
+echo "FILE_NAME $FILE_NAME $MD5SUM" | nc localhost $PORT
 DATA=`nc -l $PORT`
 
 if [ "$DATA" != "OK_FILE_NAME" ]
@@ -42,4 +43,9 @@ echo "11. ENVIANDO MD5"
 echo "FILE_MD5 MD5SUM" | nc localhost $PORT
 DATA=`nc -l $PORT`
 
-echo "14. FIN"
+echo "14. CHECK OK - FIN"
+if [ "$DATA" != "OK_FILE_MD5" ]
+then
+	echo "ERROR 4: El MD5 se envió incorrectamente"
+	exit 4
+fi
